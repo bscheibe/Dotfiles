@@ -1,0 +1,4 @@
+## Aliases.
+
+alias lla='ls -la'
+alias h=history
