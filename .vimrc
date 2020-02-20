@@ -1,4 +1,4 @@
-" bscheibe's .vimrc
+" bscheibe .vimrc
 
 " Configure behavior
 set nocompatible
