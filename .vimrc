@@ -42,10 +42,10 @@ if &term=="xterm"
 endif
 
 " Macros.
-" Open file under cursor.
+" Open file under cursor. Requires full, or relative to current, path.
 :map gf :tabe <cfile><CR> 
 
-" Setup CTags.
+" Read in CTag files. Change searched directory as needed.
 for t in split(glob('/home/CTags/*.tag'), '\n')
     execute "set tags+=".t
 endfor
