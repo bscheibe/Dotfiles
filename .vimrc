@@ -1,6 +1,6 @@
-" bscheibe .vimrc
+" bscheibe .vimrc file.
 
-" Configure behavior
+" Configure behavior.
 set nocompatible
 set bs=indent,eol,start
 set viminfo='20,\"50
