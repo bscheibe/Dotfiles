@@ -63,7 +63,6 @@ set expandtab
 set shiftwidth=4
 set shiftround
 set smarttab
-set tabstop=4
 
 " Searching behavior.
 set incsearch
