@@ -5,6 +5,12 @@ set nocompatible
 set bs=indent,eol,start
 set viminfo='20,\"50
 set history=50
+set wrap
+set confirm
+syntax on
+set nobackup
+set noswapfile
+set autoread
 
 " Pretty up our Vim a bit.
 colorscheme darkblue
@@ -50,27 +56,7 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt-=preview
 hi PmenuSbar ctermbg=black ctermfg=black
 
-
-
-set number
-set nocompatible
-set wrap
-set confirm
-
-set scrolloff=3
-set ruler
-set cursorline
-hi CursorLine cterm=bold
-
-" colorscheme darkblue
-
-syntax on
-filetype plugin on
-
-set nobackup
-set noswapfile
-set autoread
-
+" Typing behavior.
 set tabstop=4
 set autoindent
 set expandtab
@@ -78,8 +64,8 @@ set shiftwidth=4
 set shiftround
 set smarttab
 set tabstop=4
-set bs=indent,eol,start
 
+" Searching behavior.
 set incsearch
 set ignorecase
 set smartcase
