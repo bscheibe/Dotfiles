@@ -73,3 +73,6 @@ set smartcase
 set sessionoptions-=globals
 set sessionoptions-=localoptions
 set sessionoptions-=options
+
+" C++ specific.
+set matchpairs+=<:>
