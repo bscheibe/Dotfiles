@@ -46,7 +46,7 @@ endif
 :map gf :tabe <cfile><CR> 
 
 " Read in CTag files. Change searched directory as needed.
-for t in split(glob('/home/CTags/*.tag'), '\n')
+for t in split(glob('~/CTags/*.tag'), '\n')
     execute "set tags+=".t
 endfor
 set notagrelative
