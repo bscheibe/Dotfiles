@@ -68,3 +68,8 @@ set smarttab
 set incsearch
 set ignorecase
 set smartcase
+
+" Ensure opening a session does not overload .vimrc settings.
+set sessionoptions-=globals
+set sessionoptions-=localoptions
+set sessionoptions-=options
