@@ -27,7 +27,10 @@ hi Search ctermbg=green ctermfg=white
 " Highlight matches to the word under cursor.
 hi MyMatch ctermbg=Blue ctermfg=white
 autocmd CursorMoved * exe printf('match MyMatch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
+" Configure Netrw explorer settings.
 let g:netrw_liststyle=3
+let g:netrw_banner=0
 
 " Properly handle file types and encodings.
 if v:lang =~ "utf$" || v:lang =~ "UTF-8$"
