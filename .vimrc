@@ -29,8 +29,15 @@ hi MyMatch ctermbg=Blue ctermfg=white
 autocmd CursorMoved * exe printf('match MyMatch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 " Configure Netrw explorer settings.
-let g:netrw_liststyle=3
 let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_browse_split=4
+let g:netrw_altv=2
+let g:netrw_winsize = 25
+augroup DirExplorer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
 
 " Properly handle file types and encodings.
 if v:lang =~ "utf$" || v:lang =~ "UTF-8$"
