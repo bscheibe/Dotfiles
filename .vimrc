@@ -38,6 +38,8 @@ augroup DirExplorer
   autocmd!
   autocmd VimEnter * :Vexplore
 augroup END
+autocmd VimEnter * let t:created=1
+autocmd TabEnter * if !exists('t:created') | :Vex | wincmd p | let t:created=1 | endif
 
 " Properly handle file types and encodings.
 if v:lang =~ "utf$" || v:lang =~ "UTF-8$"
