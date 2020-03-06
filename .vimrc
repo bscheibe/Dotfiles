@@ -27,8 +27,8 @@ hi CursorLine cterm=bold,underline
 hi TabLineSel ctermbg=green
 hi Search ctermbg=green ctermfg=white
 hi VertSplit ctermbg=green
-hi StatusLine ctermbg=black ctermfg=white
-hi StatusLineNC ctermbg=green ctermfg=white
+hi StatusLine ctermbg=green ctermfg=white
+hi StatusLineNC ctermbg=black ctermfg=white
 hi PmenuSbar ctermbg=black ctermfg=black
 
 " Highlight matches to the word under cursor.
