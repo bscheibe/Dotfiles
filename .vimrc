@@ -47,6 +47,7 @@ augroup DirExplorer
 augroup END
 autocmd VimEnter * let t:created=1
 autocmd TabEnter * if !exists('t:created') | :Vex | wincmd p | let t:created=1 | endif
+autocmd BufRead * if exists('t:created') | let t:dir=expand('%:p:h') | wincmd p | execute "E ". t:dir | wincmd p | endif
 
 " Properly handle file types and encodings.
 if v:lang =~ "utf$" || v:lang =~ "UTF-8$"
