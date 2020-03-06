@@ -45,9 +45,22 @@ augroup DirExplorer
   autocmd!
   autocmd VimEnter * :Vexplore | wincmd p
 augroup END
-autocmd VimEnter * let t:created=1
-autocmd TabEnter * if !exists('t:created') | :Vex | wincmd p | let t:created=1 | endif
-autocmd BufRead * if exists('t:created') | let t:dir=expand('%:p:h') | wincmd p | execute "E ". t:dir | wincmd p | endif
+
+" Open a directory explorer window to the left that dynamically updates its directory
+" according to the path to the open file on the right.
+autocmd VimEnter * call ExplorerUpdate()
+autocmd BufRead  * call ExplorerUpdate()
+function ExplorerUpdate(
+    if exists('t:created')
+        let t:dir=expand('%:p:h')
+        wincmd p
+        execute "E ". t:dir
+    else
+        Vex
+        let t:created=1
+    endif
+    wincmd l
+endfunction
 
 " Properly handle file types and encodings.
 if v:lang =~ "utf$" || v:lang =~ "UTF-8$"
