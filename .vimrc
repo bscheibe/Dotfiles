@@ -21,9 +21,16 @@ set cursorline
 set scrolloff=3
 set hlsearch
 set number
+
+" Colors.
 hi CursorLine cterm=bold,underline
 hi TabLineSel ctermbg=green
 hi Search ctermbg=green ctermfg=white
+hi VertSplit ctermbg=green
+hi StatusLine ctermbg=black ctermfg=white
+hi StatusLineNC ctermbg=green ctermfg=white
+hi PmenuSbar ctermbg=black ctermfg=black
+
 " Highlight matches to the word under cursor.
 hi MyMatch ctermbg=Blue ctermfg=white
 autocmd CursorMoved * exe printf('match MyMatch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
@@ -33,10 +40,10 @@ let g:netrw_banner=0
 let g:netrw_liststyle=4
 let g:netrw_browse_split=4
 let g:netrw_altv=2
-let g:netrw_winsize = 25
+let g:netrw_winsize = 20
 augroup DirExplorer
   autocmd!
-  autocmd VimEnter * :Vexplore
+  autocmd VimEnter * :Vexplore | wincmd p
 augroup END
 autocmd VimEnter * let t:created=1
 autocmd TabEnter * if !exists('t:created') | :Vex | wincmd p | let t:created=1 | endif
@@ -67,7 +74,6 @@ set notagrelative
 " Omni-complete.
 set omnifunc=syntaxcomplete#Complete
 set completeopt-=preview
-hi PmenuSbar ctermbg=black ctermfg=black
 
 " Typing behavior.
 set tabstop=4
