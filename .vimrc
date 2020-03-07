@@ -21,6 +21,7 @@ set cursorline
 set scrolloff=3
 set hlsearch
 set number
+set fillchars+=vert:\ 
 
 " Colors.
 hi CursorLine cterm=bold,underline
