@@ -41,16 +41,12 @@ let g:netrw_liststyle=4
 let g:netrw_browse_split=4
 let g:netrw_altv=2
 let g:netrw_winsize = 20
-augroup DirExplorer
-  autocmd!
-  autocmd VimEnter * :Vexplore | wincmd p
-augroup END
 
 " Open a directory explorer window to the left that dynamically updates its directory
 " according to the path to the open file on the right.
 autocmd VimEnter * call ExplorerUpdate()
 autocmd BufRead  * call ExplorerUpdate()
-function ExplorerUpdate(
+function ExplorerUpdate()
     if exists('t:created')
         let t:dir=expand('%:p:h')
         wincmd p
