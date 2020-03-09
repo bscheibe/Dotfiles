@@ -51,7 +51,7 @@ autocmd BufRead  * call ExplorerUpdate()
 function ExplorerUpdate()
     if exists('t:created')
         let t:dir=expand('%:p:h')
-        wincmd p
+        wincmd h
         execute "E ". t:dir
     else
         Vex
