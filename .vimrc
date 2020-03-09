@@ -48,7 +48,7 @@ let g:netrw_bufsettings='wrap nonu'
 " according to the path to the open file on the right.
 autocmd VimEnter * call ExplorerUpdate()
 autocmd BufRead  * call ExplorerUpdate()
-function ExplorerUpdate()
+function! ExplorerUpdate()
     if exists('t:created')
         let t:dir=expand('%:p:h')
         wincmd h
