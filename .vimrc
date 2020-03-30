@@ -1,5 +1,13 @@
 " bscheibe .vimrc file.
 
+
+" Macros.
+" Open file under cursor. Requires full, or relative to current, path.
+map gf :tabe <cfile><CR> 
+" Open current directory in Netrw.
+map <c-n> :edit .<CR>
+
+
 " Configure behavior.
 set nocompatible
 set bs=indent,eol,start
@@ -12,6 +20,7 @@ set nobackup
 set noswapfile
 set autoread
 
+
 " Pretty up our Vim a bit.
 colorscheme darkblue
 set ruler
@@ -23,6 +32,7 @@ set hlsearch
 set number
 set fillchars+=vert:\ 
 
+
 " Colors.
 hi CursorLine cterm=bold,underline
 hi TabLineSel ctermbg=green
@@ -32,9 +42,11 @@ hi StatusLine ctermbg=green ctermfg=white
 hi StatusLineNC ctermbg=black ctermfg=white
 hi PmenuSbar ctermbg=black ctermfg=black
 
+
 " Highlight matches to the word under cursor.
 hi MyMatch ctermbg=Blue ctermfg=white
 autocmd CursorMoved * exe printf('match MyMatch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
 
 " Configure Netrw explorer settings.
 let g:netrw_banner=0
@@ -60,11 +72,13 @@ function! ExplorerUpdate()
     wincmd l
 endfunction
 
+
 " Properly handle file types and encodings.
 if v:lang =~ "utf$" || v:lang =~ "UTF-8$"
     set fileencodings=ucs-bom,utf-8,latin1
 endif
 filetype plugin on
+
 
 " Handle XTerm's quirks.
 if &term=="xterm"
@@ -73,9 +87,6 @@ if &term=="xterm"
     set t_Sf=^[[3%dm
 endif
 
-" Macros.
-" Open file under cursor. Requires full, or relative to current, path.
-:map gf :tabe <cfile><CR> 
 
 " Read in CTag files. Change searched directory as needed.
 for t in split(glob('~/CTags/*.tag'), '\n')
@@ -83,9 +94,11 @@ for t in split(glob('~/CTags/*.tag'), '\n')
 endfor
 set notagrelative
 
+
 " Omni-complete.
 set omnifunc=syntaxcomplete#Complete
 set completeopt-=preview
+
 
 " Typing behavior.
 set tabstop=4
@@ -95,15 +108,18 @@ set shiftwidth=4
 set shiftround
 set smarttab
 
+
 " Searching behavior.
 set incsearch
 set ignorecase
 set smartcase
 
+
 " Ensure opening a session does not overload .vimrc settings.
 set sessionoptions-=globals
 set sessionoptions-=localoptions
 set sessionoptions-=options
+
 
 " C++ specific.
 set matchpairs+=<:>
