@@ -5,5 +5,5 @@ alias lla='ls -la --color=auto'
 alias ll='ls -l --color=auto'
 alias h=history
 alias search='grep --color=auto -rinI --e'
-alias find='tree -fia | grep --color=auto -i'
+alias filesearch='tree -fia | grep --color=auto -i'
 alias xname='echo "\033]0;\!:1\007"'
