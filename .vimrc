@@ -41,6 +41,7 @@ hi VertSplit ctermbg=green
 hi StatusLine ctermbg=green ctermfg=white
 hi StatusLineNC ctermbg=black ctermfg=white
 hi PmenuSbar ctermbg=black ctermfg=black
+hi Normal ctermbg=NONE guibg=NONE
 
 
 " Highlight matches to the word under cursor.
