@@ -24,7 +24,7 @@ set cursorline
 set scrolloff=3
 set hlsearch
 set number
-" Note the space character at the end of these commands.
+" Note the trailing space character in each of these commands.
 set fillchars+=vert:\ 
 set listchars=tab:\|\
 set list
