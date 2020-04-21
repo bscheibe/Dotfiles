@@ -30,8 +30,10 @@ set cursorline
 set scrolloff=3
 set hlsearch
 set number
+" Note the space character at the end of these commands.
 set fillchars+=vert:\ 
-
+set listchars=tab:\|\
+set list
 
 " Colors.
 hi CursorLine cterm=bold,underline
