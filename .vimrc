@@ -35,6 +35,7 @@ set fillchars+=vert:\
 set listchars=tab:\|\
 set list
 
+
 " Colors.
 hi CursorLine cterm=bold,underline
 hi TabLineSel ctermbg=green
@@ -58,6 +59,7 @@ let g:netrw_browse_split=4
 let g:netrw_altv=2
 let g:netrw_winsize = 20
 let g:netrw_bufsettings='wrap nonu'
+
 
 " Open a directory explorer window to the left that dynamically updates its directory
 " according to the path to the open file on the right.
