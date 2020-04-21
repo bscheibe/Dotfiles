@@ -1,13 +1,6 @@
 " bscheibe .vimrc file.
 
 
-" Macros.
-" Open file under cursor. Requires full, or relative to current, path.
-map gf :tabe <cfile><CR> 
-" Open current directory in Netrw.
-map <c-n> :edit .<CR>
-
-
 " Configure behavior.
 set nocompatible
 set bs=indent,eol,start
@@ -61,23 +54,6 @@ let g:netrw_winsize = 20
 let g:netrw_bufsettings='wrap nonu'
 
 
-" Open a directory explorer window to the left that dynamically updates its directory
-" according to the path to the open file on the right.
-autocmd VimEnter * call ExplorerUpdate()
-autocmd BufRead  * call ExplorerUpdate()
-function! ExplorerUpdate()
-    if exists('t:created')
-        let t:dir=expand('%:p:h')
-        wincmd h
-        execute "E ". t:dir
-    else
-        Vex
-        let t:created=1
-    endif
-    wincmd l
-endfunction
-
-
 " Properly handle file types and encodings.
 if v:lang =~ "utf$" || v:lang =~ "UTF-8$"
     set fileencodings=ucs-bom,utf-8,latin1
@@ -128,3 +104,40 @@ set sessionoptions-=options
 
 " C++ specific.
 set matchpairs+=<:>
+
+
+" Macros:
+" Open file under cursor. Requires full, or relative to current, path.
+map gf :tabe <cfile><CR> 
+" Open current directory in Netrw.
+map <c-n> :edit .<CR>
+" Perform a CScope search on the word under cursor.
+map <C-[> :call CscopeSearch(expand("<cword>"))
+
+
+" Functions:
+" Open a directory explorer window to the left that dynamically updates its directory
+" according to the path to the open file on the right.
+autocmd VimEnter * call ExplorerUpdate()
+autocmd BufRead  * call ExplorerUpdate()
+function! ExplorerUpdate()
+    if exists('t:created')
+        let t:dir=expand('%:p:h')
+        wincmd h
+        execute "E ". t:dir
+    else
+        Vex
+        let t:created=1
+    endif
+    wincmd l
+endfunction
+
+
+" Opening a CScope database makes startup sluggish. Instead, use lazy initialization.
+function! CscopeSearch(name)
+    if !exists('g:scope_set')
+        cscope add ~/CScope/
+        let g:scope_set=1
+    endif
+    exe "cscope f s". a:name
+endfunction
