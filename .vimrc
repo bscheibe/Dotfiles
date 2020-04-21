@@ -12,6 +12,7 @@ syntax on
 set nobackup
 set noswapfile
 set autoread
+set nocscopetag
 
 
 " Pretty up our Vim a bit.
