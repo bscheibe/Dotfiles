@@ -26,7 +26,7 @@ set hlsearch
 set number
 " Note the trailing space character in each of these commands.
 set fillchars+=vert:\ 
-set listchars=tab:\|\
+set listchars=tab:\|\ 
 set list
 
 
