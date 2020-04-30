@@ -83,10 +83,7 @@ set completeopt-=preview
 
 
 " Typing behavior.
-set tabstop=4
 set autoindent
-set expandtab
-set shiftwidth=4
 set shiftround
 set smarttab
 
