@@ -113,7 +113,7 @@ map gf :tabe <cfile><CR>
 " Open current directory in Netrw.
 map <c-n> :edit .<CR>
 " Perform a CScope search on the word under cursor.
-map <C-[> :call CscopeSearch(expand("<cword>"))
+" map <C-[> :call CscopeSearch(expand("<cword>"))
 
 
 " Functions:
@@ -133,12 +133,12 @@ function! ExplorerUpdate()
     wincmd l
 endfunction
 
-
-" Opening a CScope database makes startup sluggish. Instead, use lazy initialization.
-function! CscopeSearch(name)
-    if !exists('g:scope_set')
-        cscope add ~/CScope/
-        let g:scope_set=1
-    endif
-    exe "cscope f s". a:name
-endfunction
+" 
+" " Opening a CScope database makes startup sluggish. Instead, use lazy initialization.
+" function! CscopeSearch(name)
+"     if !exists('g:scope_set')
+"         cscope add ~/CScope/
+"         let g:scope_set=1
+"     endif
+"     exe "cscope f s". a:name
+" endfunction
