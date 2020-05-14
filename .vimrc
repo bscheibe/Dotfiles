@@ -43,7 +43,9 @@ hi Normal ctermbg=NONE guibg=NONE
 
 " Highlight matches to the word under cursor.
 hi MyMatch ctermbg=Blue ctermfg=white
-autocmd CursorMoved * exe printf('match MyMatch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+let g:cursor_word_match=1
+autocmd CursorMoved * call HighMatchesUnderCursor
+ab toggleMatch call ToggleWordMatching()
 
 
 " Configure Netrw explorer settings.
@@ -130,12 +132,30 @@ function! ExplorerUpdate()
     wincmd l
 endfunction
 
-" 
-" " Opening a CScope database makes startup sluggish. Instead, use lazy initialization.
-" function! CscopeSearch(name)
-"     if !exists('g:scope_set')
-"         cscope add ~/CScope/
-"         let g:scope_set=1
-"     endif
-"     exe "cscope f s". a:name
-" endfunction
+
+function! HighMatchesUnderCursor()
+    if g:cursor_word_match == 1
+        exe printf('match MyMatch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+    endif
+endfunction
+
+
+function! ToggleWordMatching()
+    if g:cursor_word_match == 1
+        leg g:cursor_word_match=0
+        match
+    else
+        let g:cursor_word_match=1
+    endif
+endfunction
+
+
+ 
+" Opening a CScope database makes startup sluggish. Instead, use lazy initialization.
+function! CscopeSearch(name)
+     if !exists('g:scope_set')
+         cscope add ~/CScope/
+         let g:scope_set=1
+     endif
+     exe "cscope f s". a:name
+endfunction
