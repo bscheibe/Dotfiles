@@ -149,7 +149,6 @@ function! ToggleWordMatching()
     endif
 endfunction
 
-
  
 " Opening a CScope database makes startup sluggish. Instead, use lazy initialization.
 function! CscopeSearch(name)
