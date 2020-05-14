@@ -110,9 +110,9 @@ set matchpairs+=<:>
 " Open file under cursor. Requires full, or relative to current, path.
 map gf :tabe <cfile><CR> 
 " Open current directory in Netrw.
-map <c-n> :edit .<CR>
+" map <c-n> :edit .<CR>
 " Perform a CScope search on the word under cursor.
-" map <C-[> :call CscopeSearch(expand("<cword>"))
+map <C-n> :call CscopeSearch(expand("<cword>"))
 
 
 " Functions:
