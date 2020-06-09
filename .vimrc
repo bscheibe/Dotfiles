@@ -24,10 +24,11 @@ set cursorline
 set scrolloff=3
 set hlsearch
 set number
+set list
 " Note the trailing space character in each of these commands.
 set fillchars+=vert:\ 
 set listchars=tab:\|\ 
-set list
+
 
 
 " Colors.
@@ -45,7 +46,7 @@ hi Normal ctermbg=NONE guibg=NONE
 hi MyMatch ctermbg=Blue ctermfg=white
 let g:cursor_word_match=1
 autocmd CursorMoved * call HighMatchesUnderCursor
-ab toggleMatch call ToggleWordMatching()
+ab nomatch call ToggleWordMatching()
 
 
 " Configure Netrw explorer settings.
