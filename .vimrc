@@ -13,6 +13,12 @@ set nobackup
 set noswapfile
 set autoread
 set nocscopetag
+" Automatically add a closing character.
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
 
 
 " Pretty up our Vim a bit.
