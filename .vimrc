@@ -51,7 +51,7 @@ hi Normal ctermbg=NONE guibg=NONE
 " Highlight matches to the word under cursor.
 hi MyMatch ctermbg=Blue ctermfg=white
 let g:cursor_word_match=1
-autocmd CursorMoved * call HighMatchesUnderCursor
+autocmd CursorMoved * call HighMatchesUnderCursor()
 ab nomatch call ToggleWordMatching()
 
 
