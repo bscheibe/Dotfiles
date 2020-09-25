@@ -117,8 +117,8 @@ map <C-n> :call CscopeSearch(expand("<cword>"))
 
 
 " Functions:
-" Open a directory explorer window to the left that dynamically updates its directory
-" according to the path to the open file on the right.
+" Open a directory explorer window in a left split that dynamically updates its directory
+" according to the path of the open file on the right split.
 "autocmd VimEnter * call ExplorerUpdate()
 "autocmd BufRead  * call ExplorerUpdate()
 function! ExplorerUpdate()
