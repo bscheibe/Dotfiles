@@ -12,13 +12,8 @@ syntax on
 set nobackup
 set noswapfile
 set autoread
+" Don't clobber CScope and CTags results
 set nocscopetag
-" Automatically add a closing character.
-" inoremap " ""<left>
-" inoremap ' ''<left>
-" inoremap ( ()<left>
-" inoremap [ []<left>
-" inoremap { {}<left>
 
 
 " Pretty up our Vim a bit.
@@ -34,7 +29,6 @@ set list
 " Note the trailing space character in each of these commands.
 set fillchars+=vert:\ 
 set listchars=tab:\|\ 
-
 
 
 " Colors.
@@ -58,7 +52,7 @@ ab nomatch call ToggleWordMatching()
 " Configure Netrw explorer settings.
 let g:netrw_banner=0
 let g:netrw_liststyle=4
-let g:netrw_browse_split=4
+let g:netrw_browse_split=0
 let g:netrw_altv=2
 let g:netrw_winsize = 20
 let g:netrw_bufsettings='wrap nonu'
@@ -80,10 +74,10 @@ endif
 
 
 " Read in CTag files. Change searched directory as needed.
-for t in split(glob('~/CTags/*.tag'), '\n')
-    execute "set tags+=".t
-endfor
-set notagrelative
+"for t in split(glob('~/CTags/*.tag'), '\n')
+"    execute "set tags+=".t
+"endfor
+"set notagrelative
 
 
 " Omni-complete.
@@ -125,8 +119,8 @@ map <C-n> :call CscopeSearch(expand("<cword>"))
 " Functions:
 " Open a directory explorer window to the left that dynamically updates its directory
 " according to the path to the open file on the right.
-autocmd VimEnter * call ExplorerUpdate()
-autocmd BufRead  * call ExplorerUpdate()
+"autocmd VimEnter * call ExplorerUpdate()
+"autocmd BufRead  * call ExplorerUpdate()
 function! ExplorerUpdate()
     if exists('t:created')
         let t:dir=expand('%:p:h')
@@ -140,9 +134,13 @@ function! ExplorerUpdate()
 endfunction
 
 
+" Magic number here is the max buffer size in bytes that this feature will be run on. 
+" It prevents this function from bogging down Vim while huge (data) files are being viewed. 
 function! HighMatchesUnderCursor()
     if g:cursor_word_match == 1
-        exe printf('match MyMatch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+        if 300000 > line2byte('$')
+            exe printf('match MyMatch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+        endif
     endif
 endfunction
 
@@ -165,3 +163,10 @@ function! CscopeSearch(name)
      endif
      exe "cscope f s". a:name
 endfunction
+
+" Automatically add a closing character.
+" inoremap " ""<left>
+" inoremap ' ''<left>
+" inoremap ( ()<left>
+" inoremap [ []<left>
+" inoremap { {}<left>
