@@ -85,6 +85,15 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt-=preview
 
 
+" Autocomplete menu configuration.
+set completeopt=menuone
+set complete=.
+" set complete+=t
+for ch in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", '\zs')
+    execute 'inoremap <expr> '.ch.' pumvisible() ? "'.ch.'" : "'.ch.'\<C-n>\<C-p>"'
+endfor
+
+
 " Typing behavior.
 set autoindent
 set shiftround
