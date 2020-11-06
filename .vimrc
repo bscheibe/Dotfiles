@@ -6,7 +6,6 @@ set nocompatible
 set bs=indent,eol,start
 set viminfo='20,\"50
 set history=50
-set wrap
 set confirm
 syntax on
 set nobackup
@@ -14,15 +13,29 @@ set noswapfile
 set autoread
 " Don't clobber CScope and CTags results
 set nocscopetag
+" Typing behavior.
+set autoindent
+set shiftround
+set smarttab
+set scrolloff=3
+" Searching behavior.
+" set incsearch
+" set ignorecase
+set smartcase
+
+
+" Cleanup.
+imapclear
+mapclear
 
 
 " Pretty up our Vim a bit.
 colorscheme darkblue
 set ruler
+set wrap
 set title
 set showcmd
 set cursorline
-set scrolloff=3
 set hlsearch
 set number
 set list
@@ -56,6 +69,22 @@ let g:netrw_browse_split=0
 let g:netrw_altv=2
 let g:netrw_winsize = 20
 let g:netrw_bufsettings='wrap nonu'
+let g:netrw_preview=1
+
+
+" Ensure opening a session does not overload .vimrc settings.
+set sessionoptions-=globals
+set sessionoptions-=localoptions
+set sessionoptions-=options
+
+
+" Omni-complete.
+set omnifunc=syntaxcomplete#Complete
+set completeopt-=preview
+
+
+" C++ help.
+set matchpairs+=<:>
 
 
 " Properly handle file types and encodings.
@@ -80,11 +109,6 @@ endif
 "set notagrelative
 
 
-" Omni-complete.
-set omnifunc=syntaxcomplete#Complete
-set completeopt-=preview
-
-
 " Autocomplete menu configuration.
 set completeopt=menuone
 set complete=.
@@ -92,28 +116,7 @@ set complete=.
 for ch in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", '\zs')
     execute 'inoremap <expr> '.ch.' pumvisible() ? "'.ch.'" : "'.ch.'\<C-n>\<C-p>"'
 endfor
-
-
-" Typing behavior.
-set autoindent
-set shiftround
-set smarttab
-
-
-" Searching behavior.
-set incsearch
-set ignorecase
-set smartcase
-
-
-" Ensure opening a session does not overload .vimrc settings.
-set sessionoptions-=globals
-set sessionoptions-=localoptions
-set sessionoptions-=options
-
-
-" C++ specific.
-set matchpairs+=<:>
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>\<C-y>" : "\<Tab>"
 
 
 " Macros:
