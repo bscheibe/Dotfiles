@@ -22,6 +22,9 @@ set scrolloff=3
 " set incsearch
 " set ignorecase
 set smartcase
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
 
 
 " Cleanup.
