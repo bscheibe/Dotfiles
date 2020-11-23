@@ -55,11 +55,13 @@ hi VertSplit ctermbg=green
 hi StatusLine ctermbg=green ctermfg=white
 hi StatusLineNC ctermbg=black ctermfg=white
 hi PmenuSbar ctermbg=black ctermfg=black
-hi Normal ctermbg=NONE guibg=NONE
+if !has("gui_running")
+    hi Normal ctermbg=NONE guibg=NONE
+endif
 
 
 " Highlight matches to the word under cursor.
-hi MyMatch ctermbg=Blue ctermfg=white
+hi MyMatch ctermbg=Blue ctermfg=white guibg=darkgreen guifg=white cterm=bold
 let g:cursor_word_match=1
 autocmd CursorMoved * call HighMatchesUnderCursor()
 ab nomatch call ToggleWordMatching()
