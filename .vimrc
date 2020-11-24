@@ -32,6 +32,18 @@ imapclear
 mapclear
 
 
+" Macros:
+" Buffer switching.
+nnoremap <silent> <tab> :bnext<CR>
+nnoremap <silent> <s-tab> :bprev<CR>
+" Open file under cursor. Requires full, or relative to current, path.
+map gf :tabe <cfile><CR> 
+" Open current directory in Netrw.
+" map <c-n> :edit .<CR>
+" Perform a CScope search on the word under cursor.
+map <C-n> :call CscopeSearch(expand("<cword>"))
+
+
 " Pretty up our Vim a bit.
 colorscheme darkblue
 set ruler
@@ -122,15 +134,6 @@ for ch in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", '\zs')
     execute 'inoremap <expr> '.ch.' pumvisible() ? "'.ch.'" : "'.ch.'\<C-n>\<C-p>"'
 endfor
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>\<C-y>" : "\<Tab>"
-
-
-" Macros:
-" Open file under cursor. Requires full, or relative to current, path.
-map gf :tabe <cfile><CR> 
-" Open current directory in Netrw.
-" map <c-n> :edit .<CR>
-" Perform a CScope search on the word under cursor.
-map <C-n> :call CscopeSearch(expand("<cword>"))
 
 
 " Functions:
