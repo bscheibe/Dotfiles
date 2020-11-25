@@ -30,12 +30,17 @@ set guioptions-=r
 " Cleanup.
 imapclear
 mapclear
+nmapclear
 
 
 " Macros:
 " Buffer switching.
-nnoremap <silent> <tab> :bnext<CR>
-nnoremap <silent> <s-tab> :bprev<CR>
+" nnoremap <silent> <tab> :bnext<CR>
+" nnoremap <silent> <s-tab> :bprev<CR>
+nnoremap <silent> <tab> :b #<CR>
+for num in range(1, 100)
+    execute 'nnoremap <expr> '.num."b ':b".num."<CR>'"
+endfor
 " Open file under cursor. Requires full, or relative to current, path.
 map gf :tabe <cfile><CR> 
 " Open current directory in Netrw.
