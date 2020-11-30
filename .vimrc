@@ -7,6 +7,8 @@ set bs=indent,eol,start
 set viminfo='20,\"50
 set history=50
 set confirm
+" Encryption. See :help encryption.
+setlocal cm=blowfish2
 syntax on
 set nobackup
 set noswapfile
