@@ -27,6 +27,8 @@ set smartcase
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
+set wildmenu
+set wildmode=list:longest
 
 
 " Cleanup.
