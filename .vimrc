@@ -29,6 +29,7 @@ set guioptions-=T
 set guioptions-=r
 set wildmenu
 set wildmode=list:longest
+set diffopt+=iwhite
 
 
 " Cleanup.
