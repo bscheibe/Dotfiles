@@ -1,41 +1,70 @@
 " bscheibe .vimrc file.
 
 
+" Cleanup.
+imapclear
+mapclear
+nmapclear
+
+
 " Configure behavior.
 set nocompatible
 set bs=indent,eol,start
 set viminfo='20,\"50
 set history=50
+set wrap
 set confirm
-" Encryption. See :help encryption.
-setlocal cm=blowfish2
-syntax on
 set nobackup
 set noswapfile
-set autoread
-" Don't clobber CScope and CTags results
-set nocscopetag
-" Typing behavior.
+set showmatch
 set autoindent
-set shiftround
-set smarttab
-set scrolloff=3
-" Searching behavior.
-" set incsearch
-" set ignorecase
+set smartindent
+set autochdir
+set ignorecase
 set smartcase
-set guioptions-=m
-set guioptions-=T
-set guioptions-=r
+set splitright
+set scrolloff=3
+set hidden
 set wildmenu
 set wildmode=list:longest
 set diffopt+=iwhite
+filetype plugin on
 
 
-" Cleanup.
-imapclear
-mapclear
-nmapclear
+" Pretty up our Vim a bit.
+set ruler
+hi clear
+colorscheme darkblue
+if has("gui_running")
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    color elflord
+else
+    hi Normal ctermbg=NONE guibg=NONE
+endif
+set title
+set showcmd
+set cursorline
+set hlsearch
+set number
+" Note the trailing space character in each of these commands.
+set fillchars+=vert:\ 
+set listchars=tab:\|\ 
+set list
+
+" Colors.
+hi CursorLine cterm=bold,underline
+hi TabLineSel ctermbg=green
+hi Search ctermbg=green ctermfg=white
+hi VertSplit ctermbg=green
+hi StatusLine ctermbg=green ctermfg=white
+hi StatusLineNC ctermbg=black ctermfg=white
+hi Visual ctermfg=white ctermbg=black cterm=reverse
+" hi PmenuSbar ctermbg=black ctermfg=black
+if !has("gui_running")
+    hi Normal ctermbg=NONE guibg=NONE
+endif
 
 
 " Macros:
@@ -43,6 +72,7 @@ nmapclear
 " nnoremap <silent> <tab> :bnext<CR>
 " nnoremap <silent> <s-tab> :bprev<CR>
 nnoremap <silent> <tab> :b #<CR>
+map = :ls <CR>
 for num in range(1, 100)
     execute 'nnoremap <expr> '.num."b ':b".num."<CR>'"
 endfor
@@ -52,34 +82,6 @@ map gf :tabe <cfile><CR>
 " map <c-n> :edit .<CR>
 " Perform a CScope search on the word under cursor.
 map <C-n> :call CscopeSearch(expand("<cword>"))
-
-
-" Pretty up our Vim a bit.
-colorscheme darkblue
-set ruler
-set wrap
-set title
-set showcmd
-set cursorline
-set hlsearch
-set number
-set list
-" Note the trailing space character in each of these commands.
-set fillchars+=vert:\ 
-set listchars=tab:\|\ 
-
-
-" Colors.
-hi CursorLine cterm=bold,underline
-hi TabLineSel ctermbg=green
-hi Search ctermbg=green ctermfg=white
-hi VertSplit ctermbg=green
-hi StatusLine ctermbg=green ctermfg=white
-hi StatusLineNC ctermbg=black ctermfg=white
-hi PmenuSbar ctermbg=black ctermfg=black
-if !has("gui_running")
-    hi Normal ctermbg=NONE guibg=NONE
-endif
 
 
 " Highlight matches to the word under cursor.
