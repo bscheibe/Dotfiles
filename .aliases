@@ -7,3 +7,5 @@ alias h=history
 alias search='grep --color=auto -rinI --e'
 alias filesearch='tree -fia | grep --color=auto -i'
 alias xname='echo "\033]0;\!:1\007"'
+alias cp='cp -r'
+alias mkdir='mkdir -p'
